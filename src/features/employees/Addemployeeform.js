@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchEmployees, addEmployee, clearStatus } from './employeeSlice';
+import { fetchEmployees, addEmployee } from './employeeSlice';
 import { useNavigate } from 'react-router-dom';
 
 function App() {
   const { employees = [], loading, error, success } = useSelector((state) => state.employees);
-//   const employeeState = useSelector((state) => state.employees || {});
-// const { employees = [], loading, error, success } = employeeState;
+
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,9 +22,7 @@ function App() {
     joiningdate: "",
   });
 
-  // useEffect(() => {
-  //   dispatch(fetchEmployees());
-  // }, [dispatch]);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,20 +37,11 @@ function App() {
     setFormData({ ...formData }); 
   };
 
-  const handleEmployeeAdded = () => {
-    navigate('/');
-  };
+
 
   return (
     <div style={{ padding: 20 }}>
-      {/* <h2>Employee List</h2>
-      {loading ? <p>Loading...</p> : (
-        <ul>
-          {employees.map((emp, idx) => (
-            <li key={idx}>{emp.first_name} {emp.last_name} - {emp.email}</li>
-          ))}
-        </ul>
-      )} */}
+     
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {success && <p style={{ color: 'green' }}>{success}</p>}
       

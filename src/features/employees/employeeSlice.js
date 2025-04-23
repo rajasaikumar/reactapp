@@ -1,11 +1,10 @@
-// src/features/employees/employeeSlice.js
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const baseUrl = 'http://127.0.0.1:8000'; 
 
 
-// Async actions
 export const fetchEmployees = createAsyncThunk('employees/fetch', async () => {
   const response = await axios.get('http://127.0.0.1:8000/employees');
   console.log("API Response:", response.data); 
@@ -23,7 +22,7 @@ export const addEmployee = createAsyncThunk(
       } catch (err) {
         const errorDetail = err.response?.data?.detail;
   
-        // Handle both string and array errors
+      
         if (Array.isArray(errorDetail)) {
           return rejectWithValue(errorDetail[0]?.msg || 'Validation failed');
         }
@@ -60,10 +59,10 @@ const employeeSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // .addCase(fetchEmployees.pending, (state) => {
-      //   state.loading = true;
-      //   state.error = null;
-      // })
+      .addCase(fetchEmployees.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       
       .addCase(fetchEmployees.fulfilled, (state, action) => {
         state.loading = false;

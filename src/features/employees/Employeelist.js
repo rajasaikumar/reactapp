@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchEmployees } from './employeeSlice';
-import { increment,decrement } from './employeeSlice';
+
 import { useNavigate } from 'react-router-dom';
-import { MdDelete } from "react-icons/md";
+
 
 
 const EmployeeList = () => {
@@ -11,11 +11,7 @@ const EmployeeList = () => {
   const dispatch = useDispatch();
   const count = useSelector((state)=>state.employees.count)
 
-  // const employees = useSelector((state) => state.employees?.employees || []);
-  // const loading = useSelector((state) => state.employees?.loading);
-  // const error = useSelector((state) => state.employees?.error);
-//   const employeeState = useSelector((state) => state.employees || {});
-// const { employees = [], loading, error, success } = employeeState;
+  
  const {employees ,loading,error}=useSelector((state)=>state.employees || {});
 
 
@@ -23,19 +19,8 @@ const EmployeeList = () => {
     dispatch(fetchEmployees());
   }, [dispatch]);
 
-  const handleDelete = (indexToDelete) => {
-    employees((prevEmployees) =>
-      prevEmployees.filter((_, index) => index !== indexToDelete)
-    );
-  };
   
-  
-
-  
-
-  // console.log("Fetched employees:", employees); // Debugging log
-  // console.log("Loading:", loading, "Error:", error); // Debugging log
-
+ 
   if (loading) return <p>Loading...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>
   if (employees.length === 0) return <p>No employees found.</p>
@@ -45,8 +30,7 @@ const EmployeeList = () => {
     <h2 className="pf">Employee List</h2>
     <button className="btn btn-primary mb-3" onClick={() => navigate('/addemployeeform')}>Add Employee</button>
 
-    {/* <h4>Employee Count: {count}</h4>
-    <button onClick={() => dispatch(increment())}>++</button> */}
+   
     <table className="table table-bordered table-hover">
     
       <thead className='ff'> 
@@ -60,7 +44,7 @@ const EmployeeList = () => {
           <th>Address</th>
           <th>Employee ID</th>
           <th>Joining Date</th>
-          {/* <th>Actions</th> */}
+        
         </tr>
       </thead>
       <tbody>
@@ -75,9 +59,7 @@ const EmployeeList = () => {
             <td>{emp.address}</td>
             <td>{emp.employee_id}</td>
             <td>{emp.joiningdate}</td>
-            {/* <td onClick={() => handleDelete(emp.id)} style={{ cursor: 'pointer', color: 'red' }}>
-  <MdDelete />
-</td> */}
+           
 
           </tr>
         ))}
