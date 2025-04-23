@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const EmployeeList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const count = useSelector((state)=>state.employees.count)
+  
 
   
  const {employees ,loading,error}=useSelector((state)=>state.employees || {});

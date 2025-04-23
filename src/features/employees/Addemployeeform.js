@@ -4,7 +4,7 @@ import { fetchEmployees, addEmployee } from './employeeSlice';
 import { useNavigate } from 'react-router-dom';
 
 function App() {
-  const { employees = [], error, success } = useSelector((state) => state.employees);
+  const {  error, success } = useSelector((state) => state.employees);
 
 
   const dispatch = useDispatch();
