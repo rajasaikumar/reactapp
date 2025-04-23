@@ -2,11 +2,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseUrl = 'http://127.0.0.1:8000'; 
+const baseUrl = 'https://api-uovu.onrender.com/employees'; 
 
 
 export const fetchEmployees = createAsyncThunk('employees/fetch', async () => {
-  const response = await axios.get('http://127.0.0.1:8000/employees');
+  const response = await axios.get('https://api-uovu.onrender.com/employees');
   console.log("API Response:", response.data); 
   return response.data;
 });
