@@ -35,6 +35,7 @@ function App() {
     dispatch(fetchEmployees()); 
     navigate('/');
     setFormData({ ...formData }); 
+    console.log("gggg")
   };
 
 

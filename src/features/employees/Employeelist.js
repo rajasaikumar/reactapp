@@ -12,7 +12,7 @@ const EmployeeList = () => {
   
 
   
- const {employees ,loading,error}=useSelector((state)=>state.employees || {});
+ const {employees =[] ,loading,error}=useSelector((state)=>state.employees || {});
 
 
   useEffect(() => {
