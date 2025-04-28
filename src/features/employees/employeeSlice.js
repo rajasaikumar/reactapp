@@ -2,8 +2,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseUrl = 'http://127.0.0.1:8000/employees'; 
-
+const baseUrl = 'https://latestapi-wv7s.onrender.com/employees'; 
 
 export const fetchEmployees = createAsyncThunk('employees/fetch', async () => {
   const response = await axios.get('https://latestapi-wv7s.onrender.com/employees');
