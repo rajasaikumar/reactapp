@@ -2,10 +2,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseUrl = 'https://latestapi-wv7s.onrender.com/employees'; 
+const baseUrl = 'https://fastapi-5zak.onrender.com'; 
 
 export const fetchEmployees = createAsyncThunk('employees/fetch', async () => {
-  const response = await axios.get('https://latestapi-wv7s.onrender.com/employees');
+  const response = await axios.get('https://fastapi-5zak.onrender.com/employees');
   console.log("API Response:", response.data); 
   return response.data;
 });
@@ -16,7 +16,7 @@ export const addEmployee = createAsyncThunk(
     async (employee, { rejectWithValue }) => {
       try {
         const payload = { ...employee, mobileno: parseInt(employee.mobileno) };
-        const response = await axios.post(`${baseUrl}`, payload);
+        const response = await axios.post(`${baseUrl}/employees`, payload);
         return response.data;
       } catch (err) {
         const errorDetail = err.response?.data?.detail;
